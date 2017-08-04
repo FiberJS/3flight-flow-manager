@@ -33,6 +33,9 @@ class FlowManagerComponent extends Flight.UIComponent {
     }
 
     setup() {
+        if(document.location.toString() !== this.rootUrl) {
+            document.location = `${this.rootUrl}#${this.steps[0]}`;
+        }
         this.showStep(this.steps[0]);
     }
 
