@@ -1,19 +1,19 @@
-import Flight from 'flight';
+import Fiber from 'fiber';
 import { ShowStepEvent, StepBackEvent } from './events';
 import jquery from 'jquery';
 const $ = jquery;
 
 const ENTER = 13;
 
-class FlowManagerComponent extends Flight.UIComponent {
+class FlowManagerComponent extends Fiber.UIComponent {
 
     init() {
         this.rootUrl = document.location.toString().split('#')[0];
     }
 
     listen() {
-        this.on(Flight.System).listen(
-          Flight.System.Ready, event => this.setup(),
+        this.on(Fiber.System).listen(
+          Fiber.System.Ready, event => this.setup(),
         );
         this.ui(this.view).listen(
             ShowStepEvent, event => this.moveTo(event.step),
@@ -27,7 +27,7 @@ class FlowManagerComponent extends Flight.UIComponent {
 
     showStep(step) {
         if(this.view.firstElementChild) {
-            this.view.firstElementChild.remove();
+            Fiber.DOM.detach(this.view.firstElementChild);
         }
         this.view.append(this.pages[step]);
     }
@@ -48,7 +48,7 @@ class FlowManagerComponent extends Flight.UIComponent {
         (this.pages || (this.pages = {}));
         (this.steps || (this.steps = [])).push(stepDefinition.name);
 
-        this.pages[stepDefinition.name] = Flight.DOM.render(
+        this.pages[stepDefinition.name] = Fiber.DOM.render(
             stepDefinition.template
         );
 
