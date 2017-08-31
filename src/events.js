@@ -1,8 +1,8 @@
-import Flight from 'flight';
+import Fiber from 'fiber';
 
-export const FlowEvent = Flight.defineEventType({
+export const FlowEvent = Fiber.defineEventType({
     step: 'string'
 });
 
-export const ShowStepEvent = Flight.defineEvent(FlowEvent, 'Flow-Manager:ShowStep');
-export const StepBackEvent = Flight.defineEvent(Flight.basicEvent(), 'Flow-Manager:Back');
+export const ShowStepEvent = Fiber.defineEvent(FlowEvent, 'Flow-Manager:ShowStep');
+export const StepBackEvent = Fiber.defineEvent(Fiber.basicEvent(), 'Flow-Manager:Back');
