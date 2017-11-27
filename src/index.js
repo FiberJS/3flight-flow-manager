@@ -1,7 +1,5 @@
 import Fiber from 'fiber';
 import { ShowStepEvent, StepBackEvent } from './events';
-import jquery from 'jquery';
-const $ = jquery;
 
 const ENTER = 13;
 
